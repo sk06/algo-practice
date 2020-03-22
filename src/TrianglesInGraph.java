@@ -2,10 +2,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Queue;
 import java.util.Set;
 
 
@@ -83,50 +81,4 @@ public class TrianglesInGraph {
 	}
 	
 	public static class Vertex { List<Vertex> Adjacents; }
-
-    public static int GetNumberOfTriangles(Vertex source)
-    {
-        int count = 0;
-
-        List<Vertex> queue = new LinkedList<Vertex>();
-        HashSet<Vertex> visited = new HashSet<Vertex>();
-
-        queue.Enqueue(source);
-
-        while (!queue.IsEmpty())
-        {
-            Vertex current = queue.Dequeue();
-           
-            // get all non-visited adjacent vertices for current vertex
-            List<Vertex> adjacents = current.Adjacents
-                                        .Where(v => !visited.Contains(v))
-                                        .ToList();
-
-            while (!adjacents.IsEmpty())
-            {
-                Vertex curr = adjacents.First();
-
-                // count the number of common vertices 
-                //     adjacents.Contains(c)  => common vertex 
-                //     c != curr    => avoid counting itself */
-                //     !visited.Contains(c) => we haven't counted this yet 
-                count += curr.Adjacents
-                        .Select(c => adjacents.Contains(c)  
-                                             && c != curr 
-                                             && !visited.Contains(c)
-                                   ).Count();
-	    
-                // remove the vertex to avoid counting it again in next iteration
-                adjacents.Remove(curr);
-
-                queue.Enqueue(curr);
-            }
-
-            // Mark the vertex as visited
-            visited.Add(current);
-        }
-
-        return count;
-    }
-
 }

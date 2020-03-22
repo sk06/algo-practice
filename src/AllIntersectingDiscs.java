@@ -1,5 +1,35 @@
 import java.util.Arrays;
 
+/*
+ * 
+ * Given an array A of N integers we draw N discs in a 2D plane, such that i-th disc has center in (0,i) and a radius A[i]. We say that k-th disc and j-th disc intersect, if k-th and j-th discs have at least one common point.
+
+Write a function
+
+int number_of_disc_intersections(int[] A);
+which given an array A describing N discs as explained above, returns the number of pairs of intersecting discs. For example, given N=6 and
+
+A[0] = 1
+A[1] = 5
+A[2] = 2
+A[3] = 1
+A[4] = 4
+A[5] = 0
+there are 11 pairs of intersecting discs:
+
+0th and 1st
+0th and 2nd
+0th and 4th
+1st and 2nd
+1st and 3rd
+1st and 4th
+1st and 5th
+2nd and 3rd
+2nd and 4th
+3rd and 4th
+4th and 5th
+so the function should return 11. The function should return -1 if the number of intersecting pairs exceeds 10,000,000. The function may assume that N does not exceed 10,000,000.
+ */
 public class AllIntersectingDiscs {
 
 
